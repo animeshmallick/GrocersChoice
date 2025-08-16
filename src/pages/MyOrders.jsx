@@ -22,7 +22,7 @@ const MyOrders = () => {
         validate();
         AOS.init({ duration: 800 });
         const token = AuthHelper.getToken();
-        axios.get("https://api.qa.bsquaresupermart.in/getUserPurchases", {
+        axios.get("https://www.quickchoice.in/getUserPurchases", {
                 headers: {
                     "x-authorization": `Bearer ${token}`,
                     Accept: "application/json",

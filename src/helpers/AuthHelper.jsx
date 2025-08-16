@@ -48,7 +48,7 @@ class AuthHelper {
 
         try {
             const response = await axios.post(
-                `https://api.qa.bsquaresupermart.in/isvalidToken`,
+                `https://www.quickchoice.in/isvalidToken`,
                 {},
                 {
                     headers: {
