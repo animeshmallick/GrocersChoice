@@ -19,7 +19,7 @@ const AddressBookPage = () => {
         try {
             const token = AuthHelper.getToken();
             const res = await axios.get(
-                "https://www.quickchoice.in/getUserAddresses",
+                "https://api.quickchoice.in/getUserAddresses",
                 {
                     headers: {
                         Accept: "application/json",
@@ -53,7 +53,7 @@ const AddressBookPage = () => {
             // Send API request to update the default address on the server
             const token = AuthHelper.getToken();
             const res = await axios.post(
-                "https://www.quickchoice.in/setDefaultAddress",
+                "https://api.quickchoice.in/setDefaultAddress",
                 { address_id: addressId },
                 {
                     headers: {

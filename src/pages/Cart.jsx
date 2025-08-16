@@ -21,7 +21,7 @@ const CartPage = () => {
         const fetchCartData = async () => {
             if (localCart && localCart.length > 0) {
                 try {
-                    const res = await axios.post("https://www.quickchoice.in/cart", localCart);
+                    const res = await axios.post("https://api.quickchoice.in/cart", localCart);
                     setCart(res.data);
                 } catch (err) {
                     console.error("Error fetching cart data:", err);
