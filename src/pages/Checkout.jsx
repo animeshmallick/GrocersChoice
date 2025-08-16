@@ -65,7 +65,7 @@ const Checkout = () => {
 
         try {
             const token = AuthHelper.getToken();
-            const { data: purchaseRes } = await axios.get("https://www.quickchoice.in/getPurchaseID", {
+            const { data: purchaseRes } = await axios.get("https://api.quickchoice.in/getPurchaseID", {
                 headers: {
                     "x-authorization": `Bearer ${token}`,
                     "accept": "application/json"
@@ -85,7 +85,7 @@ const Checkout = () => {
             };
 
             const response = await axios.post(
-                "https://www.quickchoice.in/placeOrder",
+                "https://api.quickchoice.in/placeOrder",
                 payload,
                 {
                     headers: {
@@ -117,7 +117,7 @@ const Checkout = () => {
             const localCart = CartHelper.getStoredCart();
             if (localCart && localCart.length > 0) {
                 try {
-                    const res = await axios.post("https://www.quickchoice.in/cart", localCart);
+                    const res = await axios.post("https://api.quickchoice.in/cart", localCart);
                     setCartData(res.data);
                 } catch (err) {
                     console.error("Error fetching cart data:", err);
@@ -134,7 +134,7 @@ const Checkout = () => {
         const localCart = CartHelper.getStoredCart();
         if (localCart && localCart.length > 0) {
             try {
-                const res = await axios.post("https://www.quickchoice.in/cart", localCart);
+                const res = await axios.post("https://api.quickchoice.in/cart", localCart);
                 setCartData(res.data);
             } catch (err) {
                 console.error("Error fetching cart data:", err);
@@ -156,11 +156,11 @@ const Checkout = () => {
 
             // Fetch addresses and payments only after login validation
             const token = AuthHelper.getToken();
-            axios.get('https://www.quickchoice.in/getUserAddresses', {
+            axios.get('https://api.quickchoice.in/getUserAddresses', {
                 headers: { 'x-authorization': `Bearer ${token}` }
             }).then((res) => setAddresses([res.data.storeAddress, ...res.data.userAddress]));
 
-            axios.get('https://www.quickchoice.in/getPaymentMethod', {
+            axios.get('https://api.quickchoice.in/getPaymentMethod', {
                 headers: { 'x-authorization': `Bearer ${token}` }
             }).then((res) => setPayments(res.data));
         };

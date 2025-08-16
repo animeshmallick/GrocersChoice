@@ -48,7 +48,7 @@ class AuthHelper {
 
         try {
             const response = await axios.post(
-                `https://www.quickchoice.in/isvalidToken`,
+                `https://api.quickchoice.in/isvalidToken`,
                 {},
                 {
                     headers: {
