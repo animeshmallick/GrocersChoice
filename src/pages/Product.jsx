@@ -18,7 +18,7 @@ const ProductPage = () => {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
     useEffect(() => {
-        axios.get(`https://api.qa.bsquaresupermart.in/product/${productID}`)
+        axios.get(`https://www.quickchoice.in/product/${productID}`)
             .then((res) => {
                 setProduct(res.data);
             })

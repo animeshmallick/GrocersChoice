@@ -25,7 +25,7 @@ const ProfilePage = () => {
         validate();
 
         axios
-            .get("https://api.qa.bsquaresupermart.in/getUserProfile", {
+            .get("https://www.quickchoice.in/getUserProfile", {
                 headers: {
                     "x-authorization": `Bearer ${token}`,
                     Accept: "application/json",

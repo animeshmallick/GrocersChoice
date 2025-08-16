@@ -38,7 +38,7 @@ const ThankYou = () => {
         try {
             const token = sessionStorage.getItem("authToken");
             const response = await axios.get(
-                `https://api.qa.bsquaresupermart.in/getPurchaseDoc/${purchaseId}`,
+                `https://www.quickchoice.in/getPurchaseDoc/${purchaseId}`,
                 {
                     headers: {
                         accept: "application/json",
