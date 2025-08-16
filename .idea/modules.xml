@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/bsquare-react-vite-app.iml" filepath="$PROJECT_DIR$/.idea/bsquare-react-vite-app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/grocerschoice-react-vite-app.iml" filepath="$PROJECT_DIR$/.idea/grocerschoice-react-vite-app.iml" />
     </modules>
   </component>
 </project>
