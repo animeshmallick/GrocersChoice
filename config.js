@@ -11,5 +11,13 @@ class Config {
     get_version() {
         return this.#version;
     }
+
+    getStoreName() {
+        const hostname = window.location.hostname;
+        if (hostname.indexOf("localhost") >= 0)
+            return "grocerschoice";
+        const parts = hostname.split(".");
+        return parts[parts.length - 2];
+    }
 }
 export default new Config();

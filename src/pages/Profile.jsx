@@ -30,6 +30,7 @@ const ProfilePage = () => {
                 headers: {
                     "x-authorization": `Bearer ${token}`,
                     Accept: "application/json",
+                    'x-storename': Config.getStoreName()
                 },
             })
             .then((res) => setProfile(res.data))

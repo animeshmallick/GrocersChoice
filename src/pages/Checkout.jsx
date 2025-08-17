@@ -69,7 +69,8 @@ const Checkout = () => {
             const { data: purchaseRes } = await axios.get(`${Config.getBackendDomain()}/getPurchaseID`, {
                 headers: {
                     "x-authorization": `Bearer ${token}`,
-                    "accept": "application/json"
+                    "accept": "application/json",
+                    'x-storename': Config.getStoreName()
                 }
             });
 
@@ -90,7 +91,8 @@ const Checkout = () => {
                 {
                     headers: {
                         "Content-Type": "application/json",
-                        "x-authorization": `Bearer ${token}`
+                        "x-authorization": `Bearer ${token}`,
+                        'x-storename': Config.getStoreName()
                     }
                 }
             );
@@ -117,7 +119,10 @@ const Checkout = () => {
             const localCart = CartHelper.getStoredCart();
             if (localCart && localCart.length > 0) {
                 try {
-                    const res = await axios.post(`${Config.getBackendDomain()}/cart`, localCart);
+                    const res = await axios.post(`${Config.getBackendDomain()}/cart`, localCart,
+                        {
+                            headers: {'x-storename': Config.getStoreName()}
+                        });
                     setCartData(res.data);
                 } catch (err) {
                     console.error("Error fetching cart data:", err);
@@ -134,7 +139,9 @@ const Checkout = () => {
         const localCart = CartHelper.getStoredCart();
         if (localCart && localCart.length > 0) {
             try {
-                const res = await axios.post(`${Config.getBackendDomain()}/cart`, localCart);
+                const res = await axios.post(`${Config.getBackendDomain()}/cart`, localCart, {
+                    headers: {'x-storename': Config.getStoreName()}
+                });
                 setCartData(res.data);
             } catch (err) {
                 console.error("Error fetching cart data:", err);
@@ -157,11 +164,17 @@ const Checkout = () => {
             // Fetch addresses and payments only after login validation
             const token = AuthHelper.getToken();
             axios.get(`${Config.getBackendDomain()}/getUserAddresses`, {
-                headers: { 'x-authorization': `Bearer ${token}` }
+                headers: {
+                    'x-authorization': `Bearer ${token}`,
+                    'x-storename': Config.getStoreName()
+                }
             }).then((res) => setAddresses([res.data.storeAddress, ...res.data.userAddress]));
 
             axios.get(`${Config.getBackendDomain()}/getPaymentMethod`, {
-                headers: { 'x-authorization': `Bearer ${token}` }
+                headers: {
+                    'x-authorization': `Bearer ${token}`,
+                    'x-storename': Config.getStoreName()
+                }
             }).then((res) => setPayments(res.data));
         };
 

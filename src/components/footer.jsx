@@ -31,7 +31,9 @@ const Footer = () => {
             >
                 <Sparkles className="text-yellow-300 animate-pulse" size={18} />
                 <a
-                    href={Config.getBackendDomain()}
+                    href={Config.getBackendDomain()
+                        .replace("api", "www")
+                        .replace("qa.","")}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="font-bold text-emerald-300 hover:text-yellow-300 transition-all text-lg drop-shadow-lg"

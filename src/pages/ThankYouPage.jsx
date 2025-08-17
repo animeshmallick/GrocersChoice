@@ -43,6 +43,7 @@ const ThankYou = () => {
                     headers: {
                         accept: "application/json",
                         "x-authorization": `Bearer ${token}`,
+                        'x-storename': Config.getStoreName()
                     },
                 }
             );

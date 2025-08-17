@@ -19,7 +19,9 @@ const ProductPage = () => {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
     useEffect(() => {
-        axios.get(`${Config.getBackendDomain()}/product/${productID}`)
+        axios.get(`${Config.getBackendDomain()}/product/${productID}`,{
+            headers: {'x-storename': Config.getStoreName()}
+        })
             .then((res) => {
                 setProduct(res.data);
             })

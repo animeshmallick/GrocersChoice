@@ -27,6 +27,7 @@ const MyOrders = () => {
                 headers: {
                     "x-authorization": `Bearer ${token}`,
                     Accept: "application/json",
+                    'x-storename': Config.getStoreName()
                 },
             })
             .then((res) => setOrders(res.data))

@@ -49,6 +49,7 @@ const AddressBookPage = () => {
                 headers: {
                     Accept: "application/json",
                     "x-authorization": `Bearer ${token}`,
+                    'x-storename': Config.getStoreName()
                 },
             });
 
@@ -101,6 +102,7 @@ const AddressBookPage = () => {
                 headers: {
                     "Content-Type": "application/json",
                     "x-authorization": `Bearer ${token}`,
+                    'x-storename': Config.getStoreName()
                 },
             });
 
@@ -129,6 +131,7 @@ const AddressBookPage = () => {
                     headers: {
                         "Content-Type": "application/json",
                         "x-authorization": `Bearer ${token}`,
+                        'x-storename': Config.getStoreName()
                     },
                 }
             );

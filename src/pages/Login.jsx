@@ -42,6 +42,8 @@ const LoginPage = () => {
             const res = await axios.post(`${Config.getBackendDomain()}/login`, {
                 phone,
                 password,
+            },{
+                headers: {'x-storename': Config.getStoreName()}
             });
 
             if (res.data.authToken) {
