@@ -113,10 +113,10 @@ const ProductPage = () => {
                         <p className="text-gray-600 text-lg font-bold">Size: {product.productSize}</p>
 
                         <div className="space-x-4 flex items-center">
-                            <span className="text-emerald-600 font-bold text-xl">₹{product.productPrice}</span>
+                            <span className="text-emerald-600 font-bold text-xl">₹{product.productPrice.toFixed(2)}</span>
                             {discount > 0 && (
                                 <>
-                                    <span className="line-through text-gray-400 text-sm">₹{product.productMrp}</span>
+                                    <span className="line-through text-gray-400 text-sm">₹{product.productMrp.toFixed(2)}</span>
                                     <span className="bg-blue-100 text-blue-600 text-xs font-bold px-2 py-1 rounded-md">{discount}% OFF</span>
                                 </>
                             )}

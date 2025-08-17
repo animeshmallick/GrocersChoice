@@ -59,11 +59,11 @@ const ProductContainer = ({ product }) => {
             {/* Pricing */}
             <div className="flex items-center space-x-2 mb-1">
                 <span className="text-emerald-600 font-bold text-sm">
-                    ₹{product.productPrice}
+                    ₹{product.productPrice.toFixed(2)}
                 </span>
                 {discount > 0 && (
                     <span className="text-xs line-through text-gray-400">
-                        ₹{product.productMrp}
+                        ₹{product.productMrp.toFixed(2)}
                     </span>
                 )}
             </div>
