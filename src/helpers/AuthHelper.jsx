@@ -1,5 +1,6 @@
 // src/helpers/AuthHelper.js
 import axios from "axios";
+import Config from "../../config";
 
 const TOKEN_KEY = "authToken";
 const ADDRESS_KEY = "selectedAddress";
@@ -48,7 +49,7 @@ class AuthHelper {
 
         try {
             const response = await axios.post(
-                `https://api.quickchoice.in/isvalidToken`,
+                `${Config.getBackendDomain()}/isvalidToken`,
                 {},
                 {
                     headers: {

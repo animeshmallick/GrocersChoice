@@ -7,6 +7,7 @@ import AuthHelper from "../helpers/AuthHelper";
 import {useNavigate} from "react-router-dom";
 import Header from "../components/header";
 import Footer from "../components/footer";
+import Config from "../../config";
 
 const MyOrders = () => {
     const navigate = useNavigate();
@@ -22,7 +23,7 @@ const MyOrders = () => {
         validate();
         AOS.init({ duration: 800 });
         const token = AuthHelper.getToken();
-        axios.get("https://api.quickchoice.in/getUserPurchases", {
+        axios.get(`${Config.getBackendDomain()}/getUserPurchases`, {
                 headers: {
                     "x-authorization": `Bearer ${token}`,
                     Accept: "application/json",

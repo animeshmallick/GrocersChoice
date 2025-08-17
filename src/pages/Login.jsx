@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import AuthHelper from "../helpers/AuthHelper";
 import {FaEye, FaEyeSlash} from "react-icons/fa";
+import Config from "../../config";
 
 const LoginPage = () => {
     const [phone, setPhone] = useState("");
@@ -38,7 +39,7 @@ const LoginPage = () => {
         setIsLoading(true);
 
         try {
-            const res = await axios.post("https://api.quickchoice.in/login", {
+            const res = await axios.post(`${Config.getBackendDomain()}/login`, {
                 phone,
                 password,
             });

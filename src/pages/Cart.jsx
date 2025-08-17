@@ -11,6 +11,7 @@ import ProceedToCheckout from "../components/buttons/ProceedToCheckout";
 import CartLogin from "../components/buttons/CartLogin";
 import ClearCart from "../components/buttons/ClearCart";
 import CartSummary from "../components/checkout/CartSummary";
+import Config from "../../config";
 
 const CartPage = () => {
     const [localCart, setLocalCart] = useState(CartHelper.getStoredCart());
@@ -21,7 +22,7 @@ const CartPage = () => {
         const fetchCartData = async () => {
             if (localCart && localCart.length > 0) {
                 try {
-                    const res = await axios.post("https://api.quickchoice.in/cart", localCart);
+                    const res = await axios.post(`${Config.getBackendDomain()}/cart`, localCart);
                     setCart(res.data);
                 } catch (err) {
                     console.error("Error fetching cart data:", err);
