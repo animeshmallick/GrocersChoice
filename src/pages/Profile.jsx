@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import Config from "../../config";
+import Divider from "../components/Divider";
 
 const ProfilePage = () => {
     const navigate = useNavigate();
@@ -39,9 +40,9 @@ const ProfilePage = () => {
         <div className="min-h-screen flex flex-col bg-gradient-to-b from-green-50 via-white to-emerald-50">
             <Header isLoggedIn={isLoggedIn} />
 
-            <main className="flex-grow px-4 py-8 flex justify-center items-start">
+            <main className="flex-grow px-4 py-3 flex justify-center items-start">
                 <motion.div
-                    className="bg-white shadow-2xl rounded-3xl p-8 max-w-md w-full text-center"
+                    className="bg-white shadow-2xl rounded-3xl px-8 py-4 max-w-md w-full text-center"
                     initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, ease: "easeOut" }}
@@ -50,16 +51,26 @@ const ProfilePage = () => {
                     <img
                         src={`https://api.dicebear.com/7.x/initials/svg?seed=${profile.fname + profile.lname || "User"}`}
                         alt="avatar"
-                        className="w-24 h-24 rounded-full mx-auto mb-4 border-4 border-indigo-100"
+                        className="w-24 h-24 rounded-full mx-auto mb-2 border-4 border-indigo-100"
                     />
 
+                    <Divider />
                     <h2 className="text-2xl font-bold text-indigo-700">{profile.fname + profile.lname || "Unknown User"}</h2>
-                    <p className="text-gray-500 mt-1">{profile.phone || "No phone linked"}</p>
+                    <p className="text-gray-500 mt-1">Phone: {profile.phone || "No phone linked"}</p>
+                    <Divider />
 
                     <div className="mt-6 space-y-3">
                         <motion.button
                             whileTap={{ scale: 0.97 }}
-                            className="w-full px-6 py-2 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 transition-all"
+                            onClick={() => navigate("/orders")}
+                            className="w-full px-6 py-2 rounded-lg bg-yellow-400 text-white font-semibold hover:bg-indigo-700 transition-all"
+                        >
+                            My Orders
+                        </motion.button>
+
+                        <motion.button
+                            whileTap={{ scale: 0.97 }}
+                            className="w-full px-6 py-1 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 transition-all"
                         >
                             Edit Profile
                         </motion.button>
@@ -67,7 +78,7 @@ const ProfilePage = () => {
                         <motion.button
                             whileTap={{ scale: 0.97 }}
                             onClick={() => navigate("/addressBook")}
-                            className="w-full px-6 py-2 rounded-lg bg-emerald-500 text-white hover:bg-emerald-600 transition-all"
+                            className="w-full px-6 py-1 rounded-lg bg-emerald-500 text-white hover:bg-emerald-600 transition-all"
                         >
                             Go to Address Book
                         </motion.button>
