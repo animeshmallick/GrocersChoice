@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import { motion, AnimatePresence } from "framer-motion";
 import Header from "../components/header";
@@ -14,7 +14,7 @@ const AddressBookPage = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [loadingAddressId, setLoadingAddressId] = useState(null);
     const [showAddPopup, setShowAddPopup] = useState(false);
-    const [showDeletePopup, setShowDeletePopup] = useState(null); // holds addressId for confirmation
+    const [showDeletePopup, setShowDeletePopup] = useState(null);
     const [newAddress, setNewAddress] = useState({
         address_label: "",
         addr_line1: "",
@@ -24,6 +24,22 @@ const AddressBookPage = () => {
         pincode: "",
     });
     const [adding, setAdding] = useState(false);
+
+    // 🔑 Ref for Add Address popup
+    const addPopupRef = useRef(null);
+
+    // Close Add Address popup if clicked outside
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (addPopupRef.current && !addPopupRef.current.contains(event.target))
+                setShowAddPopup(false);
+        };
+        showAddPopup ?
+            document.addEventListener("mousedown", handleClickOutside) :
+            document.removeEventListener("mousedown", handleClickOutside);
+
+        return () => {document.removeEventListener("mousedown", handleClickOutside);};
+    }, [showAddPopup]);
 
     // Fetch user addresses
     const fetchAddresses = async () => {
@@ -68,8 +84,6 @@ const AddressBookPage = () => {
                         isDefault: addr.address_id === addressId,
                     }))
                 );
-            } else {
-                console.error("Failed to set default address on server.");
             }
         } catch (err) {
             console.error("Error setting default address:", err);
@@ -94,8 +108,6 @@ const AddressBookPage = () => {
                 setUserAddresses((prev) =>
                     prev.filter((addr) => addr.address_id !== addressId)
                 );
-            } else {
-                console.error("Failed to delete address on server.");
             }
         } catch (err) {
             console.error("Error deleting address:", err);
@@ -131,9 +143,7 @@ const AddressBookPage = () => {
                     state: "",
                     pincode: "",
                 });
-                fetchAddresses(); // refresh list
-            } else {
-                console.error("Failed to add new address.");
+                fetchAddresses();
             }
         } catch (err) {
             console.error("Error adding address:", err);
@@ -280,6 +290,7 @@ const AddressBookPage = () => {
                         exit={{ opacity: 0 }}
                     >
                         <motion.div
+                            ref={addPopupRef} // 🔑 attach ref
                             className="m-6 bg-white rounded-2xl shadow-2xl p-6 w-full max-w-md relative"
                             initial={{ scale: 0.9, opacity: 0 }}
                             animate={{ scale: 1, opacity: 1 }}
@@ -330,7 +341,7 @@ const AddressBookPage = () => {
                         exit={{ opacity: 0 }}
                     >
                         <motion.div
-                            className="bg-white rounded-xl shadow-2xl p-6 w-full max-w-sm text-center"
+                            className="bg-white rounded-xl shadow-2xl mx-8 p-6 w-full max-w-sm text-center"
                             initial={{ scale: 0.9, opacity: 0 }}
                             animate={{ scale: 1, opacity: 1 }}
                             exit={{ scale: 0.9, opacity: 0 }}
