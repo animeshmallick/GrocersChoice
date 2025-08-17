@@ -54,6 +54,7 @@ class AuthHelper {
                 {
                     headers: {
                         "x-authorization": `Bearer ${token}`,
+                        "x-storename": Config.getStoreName()
                     },
                     timeout: 5000,
                 }
