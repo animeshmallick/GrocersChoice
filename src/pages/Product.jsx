@@ -9,6 +9,7 @@ import CartHelper from "../helpers/CartHelper";
 import AuthHelper from "../helpers/AuthHelper";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import ProductQuantityContainer from "../components/ProductQuantityContainer";
+import Config from "../../config";
 
 const ProductPage = () => {
     const { productId } = useParams();
@@ -18,7 +19,7 @@ const ProductPage = () => {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
     useEffect(() => {
-        axios.get(`https://api.quickchoice.in/product/${productID}`)
+        axios.get(`${Config.getBackendDomain()}/product/${productID}`)
             .then((res) => {
                 setProduct(res.data);
             })

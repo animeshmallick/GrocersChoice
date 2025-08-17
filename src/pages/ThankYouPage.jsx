@@ -16,6 +16,7 @@ import {
     Home
 } from "lucide-react";
 import AuthHelper from "../helpers/AuthHelper";
+import Config from "../../config";
 
 const STATUS_STAGES = [
     { key: "PLACED", icon: ShoppingBag, label: "Placed" },
@@ -37,8 +38,7 @@ const ThankYou = () => {
     const fetchPurchaseDoc = async () => {
         try {
             const token = sessionStorage.getItem("authToken");
-            const response = await axios.get(
-                `https://api.quickchoice.in/getPurchaseDoc/${purchaseId}`,
+            const response = await axios.get(`${Config.getBackendDomain()}/getPurchaseDoc/${purchaseId}`,
                 {
                     headers: {
                         accept: "application/json",

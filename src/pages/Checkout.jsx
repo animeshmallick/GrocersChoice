@@ -11,6 +11,7 @@ import CartSummary from "../components/checkout/CartSummary";
 import CartHelper from "../helpers/CartHelper";
 import { useNavigate } from "react-router-dom";
 import PageTitle from "../components/PageTitle";
+import Config from "../../config";
 
 const steps = ['Address', 'Payment', 'Review'];
 
@@ -65,7 +66,7 @@ const Checkout = () => {
 
         try {
             const token = AuthHelper.getToken();
-            const { data: purchaseRes } = await axios.get("https://api.quickchoice.in/getPurchaseID", {
+            const { data: purchaseRes } = await axios.get(`${Config.getBackendDomain()}/getPurchaseID`, {
                 headers: {
                     "x-authorization": `Bearer ${token}`,
                     "accept": "application/json"
@@ -84,8 +85,7 @@ const Checkout = () => {
                 }))
             };
 
-            const response = await axios.post(
-                "https://api.quickchoice.in/placeOrder",
+            const response = await axios.post(`${Config.getBackendDomain()}/placeOrder`,
                 payload,
                 {
                     headers: {
@@ -117,7 +117,7 @@ const Checkout = () => {
             const localCart = CartHelper.getStoredCart();
             if (localCart && localCart.length > 0) {
                 try {
-                    const res = await axios.post("https://api.quickchoice.in/cart", localCart);
+                    const res = await axios.post(`${Config.getBackendDomain()}/cart`, localCart);
                     setCartData(res.data);
                 } catch (err) {
                     console.error("Error fetching cart data:", err);
@@ -134,7 +134,7 @@ const Checkout = () => {
         const localCart = CartHelper.getStoredCart();
         if (localCart && localCart.length > 0) {
             try {
-                const res = await axios.post("https://api.quickchoice.in/cart", localCart);
+                const res = await axios.post(`${Config.getBackendDomain()}/cart`, localCart);
                 setCartData(res.data);
             } catch (err) {
                 console.error("Error fetching cart data:", err);
@@ -156,11 +156,11 @@ const Checkout = () => {
 
             // Fetch addresses and payments only after login validation
             const token = AuthHelper.getToken();
-            axios.get('https://api.quickchoice.in/getUserAddresses', {
+            axios.get(`${Config.getBackendDomain()}/getUserAddresses`, {
                 headers: { 'x-authorization': `Bearer ${token}` }
             }).then((res) => setAddresses([res.data.storeAddress, ...res.data.userAddress]));
 
-            axios.get('https://api.quickchoice.in/getPaymentMethod', {
+            axios.get(`${Config.getBackendDomain()}/getPaymentMethod`, {
                 headers: { 'x-authorization': `Bearer ${token}` }
             }).then((res) => setPayments(res.data));
         };

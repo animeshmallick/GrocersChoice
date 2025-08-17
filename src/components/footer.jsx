@@ -2,6 +2,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
+import Config from "../../config";
 
 const Footer = () => {
     const isProdEnv = window.location.hostname.indexOf("www.") >= 0;
@@ -30,7 +31,7 @@ const Footer = () => {
             >
                 <Sparkles className="text-yellow-300 animate-pulse" size={18} />
                 <a
-                    href="https://api.quickchoice.in"
+                    href={Config.getBackendDomain()}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="font-bold text-emerald-300 hover:text-yellow-300 transition-all text-lg drop-shadow-lg"
@@ -42,7 +43,7 @@ const Footer = () => {
             {/* Version (only in non-prod) */}
             {!isProdEnv && (
                 <p className="text-xs mt-1 text-gray-300 italic">
-                    Version: 1.1.2
+                    Version: {Config.get_version()}
                 </p>
             )}
         </motion.footer>

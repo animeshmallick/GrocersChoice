@@ -7,6 +7,7 @@ import AuthHelper from "../helpers/AuthHelper";
 import { useNavigate } from "react-router-dom";
 import Header from "../components/header";
 import Footer from "../components/footer";
+import Config from "../../config";
 
 const ProfilePage = () => {
     const navigate = useNavigate();
@@ -24,8 +25,7 @@ const ProfilePage = () => {
         };
         validate();
 
-        axios
-            .get("https://api.quickchoice.in/getUserProfile", {
+        axios.get(`${Config.getBackendDomain()}/getUserProfile`, {
                 headers: {
                     "x-authorization": `Bearer ${token}`,
                     Accept: "application/json",

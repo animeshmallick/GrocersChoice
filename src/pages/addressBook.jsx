@@ -7,6 +7,7 @@ import Header from "../components/header";
 import Footer from "../components/footer";
 import AuthHelper from "../helpers/AuthHelper";
 import { useNavigate } from "react-router-dom";
+import Config from "../../config";
 
 const AddressBookPage = () => {
     const navigate = useNavigate();
@@ -18,8 +19,7 @@ const AddressBookPage = () => {
     const fetchAddresses = async () => {
         try {
             const token = AuthHelper.getToken();
-            const res = await axios.get(
-                "https://api.quickchoice.in/getUserAddresses",
+            const res = await axios.get(`${Config.getBackendDomain()}/getUserAddresses`,
                 {
                     headers: {
                         Accept: "application/json",
@@ -53,7 +53,7 @@ const AddressBookPage = () => {
             // Send API request to update the default address on the server
             const token = AuthHelper.getToken();
             const res = await axios.post(
-                "https://api.quickchoice.in/setDefaultAddress",
+                `${Config.getBackendDomain()}/setDefaultAddress`,
                 { address_id: addressId },
                 {
                     headers: {
