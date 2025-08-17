@@ -43,7 +43,7 @@ const Footer = () => {
             {/* Version (only in non-prod) */}
             {!isProdEnv && (
                 <p className="text-xs mt-1 text-gray-300 italic">
-                    Version: 1.1.2
+                    Version: {Config.get_version()}
                 </p>
             )}
         </motion.footer>
