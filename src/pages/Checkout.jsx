@@ -257,7 +257,7 @@ const Checkout = () => {
                                 key={label}
                                 whileHover={{ scale: i < step ? 1.05 : 1 }}
                                 whileTap={{ scale: 0.95 }}
-                                className={`flex-1 text-center text-lg cursor-pointer font-medium pb-1 border-b-4 transition-all duration-300 ${
+                                className={`flex-1 text-center text-m cursor-pointer font-medium pb-1 border-b-4 transition-all duration-300 ${
                                     step === i
                                         ? 'border-green-500 text-green-600'
                                         : 'border-gray-200 text-gray-400'

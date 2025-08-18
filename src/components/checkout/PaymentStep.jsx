@@ -5,7 +5,7 @@ import BottomNavigation from "./BottomNavigation";
 const PaymentSelector = ({ methods, selected, onSelect, onNext, onBack, placeOrder}) => {
     return (
         <div className="p-2">
-            <h2 className="text-2xl font-semibold mb-4">💳 Select Payment Method</h2>
+            <h2 className="text-xl font-semibold mb-4">💳 Select Payment Method</h2>
             <Fade cascade>
                 <div className="grid gap-2">
                     {methods.map((method) => (
