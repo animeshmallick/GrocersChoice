@@ -189,11 +189,13 @@ const Checkout = () => {
     const handleSelectAddress = (address) => {
         setSelectedAddress(address);
         sessionStorage.setItem('selectedAddress', JSON.stringify(address));
+        nextStep();
     };
 
     const handleSelectPayment = (payment) => {
         setSelectedPayment(payment);
         sessionStorage.setItem('selectedPayment', JSON.stringify(payment));
+        nextStep();
     };
 
     const renderStep = () => {
@@ -247,56 +249,61 @@ const Checkout = () => {
                     onUpdate={updateCart}
                 />
 
-                <div className="mt-3 p-5 pb-2 pt-1 flex justify-between">
-                    {steps.map((label, i) => (
-                        <motion.div
-                            key={label}
-                            whileHover={{ scale: i < step ? 1.05 : 1 }}
-                            whileTap={{ scale: 0.95 }}
-                            className={`flex-1 text-center cursor-pointer font-medium pb-2 border-b-4 transition-all duration-300 ${
-                                step === i
-                                    ? 'border-green-500 text-green-600'
-                                    : 'border-gray-200 text-gray-400'
-                            }`}
-                            onClick={() => {
-                                if (i < step) {
-                                    if (i === 0) {
-                                        sessionStorage.removeItem('selectedAddress');
-                                        setSelectedAddress(null);
-                                    } else if (i === 1) {
-                                        sessionStorage.removeItem('selectedPayment');
-                                        setSelectedPayment(null);
+                <div className="max-w-3xl pb-2 mx-auto bg-white rounded-3xl shadow-xl border border-gray-200 overflow-hidden">
+                    {/* Tabs row */}
+                    <div className="flex bg-emerald-100/40 py-1 px-6 border-b border-emerald-400/30">
+                        {steps.map((label, i) => (
+                            <motion.div
+                                key={label}
+                                whileHover={{ scale: i < step ? 1.05 : 1 }}
+                                whileTap={{ scale: 0.95 }}
+                                className={`flex-1 text-center text-m cursor-pointer font-medium pb-1 border-b-4 transition-all duration-300 ${
+                                    step === i
+                                        ? 'border-green-500 text-green-600'
+                                        : 'border-gray-200 text-gray-400'
+                                }`}
+                                onClick={() => {
+                                    if (i < step) {
+                                        if (i === 0) {
+                                            sessionStorage.removeItem('selectedAddress');
+                                            setSelectedAddress(null);
+                                        } else if (i === 1) {
+                                            sessionStorage.removeItem('selectedPayment');
+                                            setSelectedPayment(null);
+                                        }
+                                        setStep(i);
                                     }
-                                    setStep(i);
-                                }
-                            }}
+                                }}
+                            >
+                                {label}
+                            </motion.div>
+                        ))}
+                    </div>
+
+                    {/* Step content */}
+                    <AnimatePresence mode="wait">
+                        <motion.div
+                            key={step}
+                            initial={{ opacity: 0, x: 50 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            exit={{ opacity: 0, x: -50 }}
+                            transition={{ duration: 0.3 }}
                         >
-                            {label}
+                            {renderStep()}
                         </motion.div>
-                    ))}
+                    </AnimatePresence>
+
+                    {error && (
+                        <motion.div
+                            className="text-red-500 text-center mt-4"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                        >
+                            {error}
+                        </motion.div>
+                    )}
                 </div>
 
-                <AnimatePresence mode="wait">
-                    <motion.div
-                        key={step}
-                        initial={{ opacity: 0, x: 50 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: -50 }}
-                        transition={{ duration: 0.3 }}
-                    >
-                        {renderStep()}
-                    </motion.div>
-                </AnimatePresence>
-
-                {error && (
-                    <motion.div
-                        className="text-red-500 text-center mt-4"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                    >
-                        {error}
-                    </motion.div>
-                )}
             </main>
             <Footer />
         </div>

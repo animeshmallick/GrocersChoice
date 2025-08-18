@@ -31,51 +31,53 @@ const ProductQuantityContainer = ({ productId, onUpdate }) => {
     };
 
     return (
-        <AnimatePresence mode="wait" initial={false}>
-            {productQuantity === 0 ? (
-                <motion.button
-                    key="add"
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.8 }}
-                    whileTap={{ scale: 0.95 }}
-                    onClick={handleAdd}
-                    className="w-full mt-2 text-[13px] font-semibold text-emerald-600 border border-emerald-600 rounded-full py-1.5 transition-all hover:bg-emerald-50"
-                >
-                    ADD
-                </motion.button>
-            ) : (
-                <motion.div
-                    key="quantity"
-                    initial={{ opacity: 0, y: 8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -8 }}
-                    className="flex items-center justify-between px-2 mt-2 w-[100px] h-[36px] border border-emerald-600 rounded-full bg-white text-emerald-600 font-bold text-[15px] shadow-sm"
-                    onClick={(e) => {
-                        e.stopPropagation();
-                        e.preventDefault();
-                    }}
-                >
+        <div className="flex justify-center w-full">
+            <AnimatePresence mode="wait" initial={false}>
+                {productQuantity === 0 ? (
                     <motion.button
-                        whileTap={{ scale: 0.9 }}
-                        onClick={handleDecrease}
-                        className="w-6 h-6 flex items-center justify-center rounded-full text-xl"
+                        key="add"
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.8 }}
+                        whileTap={{ scale: 0.95 }}
+                        onClick={handleAdd}
+                        className="w-[70%] font-semibold text-emerald-600 border border-emerald-600 rounded-full transition-all hover:bg-emerald-50 text-center"
                     >
-                        −
+                        ADD
                     </motion.button>
-
-                    <span className="text-sm">{productQuantity}</span>
-
-                    <motion.button
-                        whileTap={{ scale: 0.9 }}
-                        onClick={handleIncrease}
-                        className="w-6 h-6 flex items-center justify-center rounded-full text-xl"
+                ) : (
+                    <motion.div
+                        key="quantity"
+                        initial={{ opacity: 0, y: 8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -8 }}
+                        className="w-[70%] flex items-center justify-between px-2 border border-emerald-600 rounded-full bg-white text-emerald-600 font-bold shadow-sm"
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            e.preventDefault();
+                        }}
                     >
-                        +
-                    </motion.button>
-                </motion.div>
-            )}
-        </AnimatePresence>
+                        <motion.button
+                            whileTap={{ scale: 0.9 }}
+                            onClick={handleDecrease}
+                            className="w-6 h-6 flex items-center justify-center rounded-full text-xl"
+                        >
+                            −
+                        </motion.button>
+
+                        <span className="text-sm">{productQuantity}</span>
+
+                        <motion.button
+                            whileTap={{ scale: 0.9 }}
+                            onClick={handleIncrease}
+                            className="w-6 h-6 flex items-center justify-center rounded-full text-xl"
+                        >
+                            +
+                        </motion.button>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+        </div>
     );
 };
 

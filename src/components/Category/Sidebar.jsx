@@ -10,7 +10,7 @@ const Sidebar = ({ subCategories = [], selected, onSelect }) => {
     };
 
     return (
-        <aside className="bg-gray/70 backdrop-blur-md rounded-2xl border border-gray-200 shadow-xl py-3 px-1 h-fit sticky transition-all">
+        <aside className="bg-gray/70 backdrop-blur-md rounded-2xl border border-gray-200 shadow-xl py-1 px-0.5 transition-all">
             <motion.ul
                 initial="hidden"
                 animate="visible"
@@ -27,7 +27,7 @@ const Sidebar = ({ subCategories = [], selected, onSelect }) => {
                     <motion.li key={index} variants={itemVariants}>
                         <button
                             onClick={() => onSelect(sub)}
-                            className={`w-full flex items-center justify-between px-1 py-3 rounded-xl text-l font-medium group transition-all duration-300 ease-in-out transform hover:scale-[1.015] ${
+                            className={`w-full flex items-center justify-between px-1 py-2 rounded-xl text-sm font-medium group transition-all duration-300 ease-in-out transform hover:scale-[1.015] ${
                                 selected === sub
                                     ? "bg-gradient-to-r from-emerald-500 to-emerald-700 text-white shadow-lg"
                                     : "bg-gray-100 text-gray-700 hover:bg-gradient-to-r hover:from-emerald-50 hover:to-emerald-100 hover:text-emerald-800"

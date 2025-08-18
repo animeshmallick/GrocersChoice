@@ -25,12 +25,13 @@ const SPC = ({ address, payment, onBack, placeOrder, amount = 0}) => {
         }
     };
     return (
-        <div className="p-2">
-            <h2 className="text-2xl font-semibold mb-4">🧾 Review & Confirm</h2>
-            <div className="bg-white p-3 rounded-xl shadow-md space-y-2">
+        <div className="p-1">
+            <h2 className="text-xl font-semibold">🧾 Review & Confirm</h2>
+            <Divider />
+            <div className="bg-white p-1 px-2 rounded-xl shadow-md space-y-1">
                 <div>
                     <h3 className="text-lg font-semibold">📍 Address</h3>
-                    <p className="font-semibold">{address?.addr_line1}, {address?.addr_line2}</p>
+                    <p className="font-semibold px-4">{address?.addr_line1}, {address?.addr_line2}</p>
                     <p>{address?.city}, {address?.state}, {address?.pincode}</p>
                 </div>
                 <Divider />
@@ -96,7 +97,7 @@ const SPC = ({ address, payment, onBack, placeOrder, amount = 0}) => {
                     >
                         <motion.button
                             onTap={placeOrderIfTnCAccepted}
-                            className="flex items-center gap-2 bg-gradient-to-r from-green-500 to-green-700 text-white py-3 px-8 md:px-10 rounded-full shadow-xl font-bold text-lg transition-all duration-300 ease-in-out"
+                            className="flex items-center gap-2 bg-gradient-to-r from-green-500 to-green-700 text-white m-2 py-2 px-8 md:px-10 rounded-full shadow-xl font-bold text-lg transition-all duration-300 ease-in-out"
                             whileHover={{ scale: 1.05, boxShadow: "0 10px 20px rgba(34, 197, 94, 0.5)" }}
                             whileTap={{ scale: 0.98, backgroundColor: "#15803d" }}
                             animate={{

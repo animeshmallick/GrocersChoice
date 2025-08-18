@@ -18,7 +18,7 @@ const CartSummary = ({ products = [], bill = {}, onUpdate, showBillFlag = false 
 
     return (
         <motion.div
-            className="max-w-3xl mx-auto bg-white rounded-3xl shadow-xl border border-gray-200 overflow-hidden"
+            className="max-w-3xl mx-auto bg-white rounded-3xl shadow-xl border border-gray-200 overflow-hidden mb-2"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
@@ -36,7 +36,7 @@ const CartSummary = ({ products = [], bill = {}, onUpdate, showBillFlag = false 
             </motion.div>
 
             {/* Product List */}
-            <div className="p-1 space-y-2">
+            <div className="px-1 space-y-2">
                 <AnimatePresence>
                     {products.map(item => (
                         <motion.div
@@ -51,7 +51,7 @@ const CartSummary = ({ products = [], bill = {}, onUpdate, showBillFlag = false 
                                 <motion.img
                                     src={item.image_url}
                                     alt={item.name}
-                                    className="col-span-2 w-16 h-16 object-contain rounded-lg"
+                                    className="col-span-2 w-16 h-16 object-cover rounded-lg"
                                     whileHover={{ scale: 1.08, rotate: 1 }}
                                     transition={{ type: "spring", stiffness: 200 }}
                                     onTap={() => navigate(`/product/${item.id}`)}
@@ -64,7 +64,7 @@ const CartSummary = ({ products = [], bill = {}, onUpdate, showBillFlag = false 
                                 </div>
 
                             {/* Actions (1/4) */}
-                            <div className="col-span-3 flex flex-col justify-between h-full mb-2">
+                            <div className="col-span-3 flex flex-col justify-between h-full">
                                 {/* Quantity Control */}
                                 <div className="flex items-center justify-center gap-1">
                                     <motion.button
@@ -73,7 +73,7 @@ const CartSummary = ({ products = [], bill = {}, onUpdate, showBillFlag = false 
                                             CartHelper.updateQuantity(item.id, -1);
                                             onUpdate()
                                         }}
-                                        className="bg-gray-200 hover:bg-gray-300 active:scale-95 rounded-lg px-2 py-1 text-lg shadow-inner"
+                                        className="bg-gray-200 hover:bg-gray-300 active:scale-95 rounded-lg px-2 text-lg shadow-inner"
                                     >
                                         −
                                     </motion.button>
@@ -84,22 +84,11 @@ const CartSummary = ({ products = [], bill = {}, onUpdate, showBillFlag = false 
                                             CartHelper.updateQuantity(item.id, 1);
                                             onUpdate()
                                         }}
-                                        className="bg-gray-200 hover:bg-gray-300 active:scale-95 rounded-lg px-2 py-1 text-lg shadow-inner"
+                                        className="bg-gray-200 hover:bg-gray-300 active:scale-95 rounded-lg px-2 text-lg shadow-inner"
                                     >
                                         +
                                     </motion.button>
                                 </div>
-
-                                {/* Remove Button */}
-                                <motion.button
-                                    whileHover={{ scale: 1.02 }}
-                                    whileTap={{ scale: 0.95 }}
-                                    onClick={() => handleRemove(item.id)}
-                                    className="text-xs text-red-500 hover:underline text-center transition-colors duration-200"
-                                >
-                                    Remove
-                                </motion.button>
-
                                 {/* Amount */}
                                 <div className="text-green-600 font-bold text-base text-center">
                                     ₹{(item.selling_price * item.quantity).toFixed(2)}
@@ -112,7 +101,7 @@ const CartSummary = ({ products = [], bill = {}, onUpdate, showBillFlag = false 
             </div>
 
             {/* Toggle Charges & Total */}
-            <div className="border-t px-4 py-2 bg-gray-50 flex justify-between items-center">
+            <div className="border-t px-4 py-1 bg-gray-50 flex justify-between items-center">
                 <button
                     onClick={() => setShowBill(!showBill)}
                     className="flex items-center gap-2 text-sm text-emerald-700 hover:underline"

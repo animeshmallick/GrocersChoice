@@ -22,7 +22,7 @@ const ProductContainer = ({ product }) => {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             whileHover={inStock ? { scale: 1.03, boxShadow: "0 6px 20px rgba(0,0,0,0.1)" } : {}}
-            className={`relative bg-white rounded-2xl shadow-md p-3 transition-all duration-300 group overflow-hidden ${
+            className={`relative bg-white rounded-2xl shadow-md p-1 transition-all duration-300 group overflow-hidden ${
                 !inStock ? "opacity-60 cursor-not-allowed" : "hover:shadow-lg"
             }`}
         >
@@ -45,34 +45,32 @@ const ProductContainer = ({ product }) => {
                 <motion.img
                     src={product.productImg}
                     alt={product.productName}
-                    className={`h-32 w-full object-contain mb-3 transition-transform duration-300 ${
+                    className={`h-16 w-full object-cover mb-1 transition-transform duration-300 ${
                         inStock ? "group-hover:scale-105" : ""
                     }`}
                     whileHover={{ scale: 1.08 }}
                 />
-                <div className="text-sm font-semibold text-gray-900 line-clamp-2 mb-1">
-                    {product.productName}
+                <div className="text-m font-semibold text-gray-900 line-clamp-2">{product.productName}</div>
+                <div className="flex">
+                    <div className="text-xs text-gray-500 mt-1">{product.productSize}</div>
+                    <div className="w-full flex justify-end space-x-2 mb-1">
+                        <span className="text-emerald-600 font-bold text-sm">
+                            ₹{product.productPrice.toFixed(2)}
+                        </span>
+                        {discount > 0 && (
+                            <span className="text-xs line-through text-gray-400">
+                                ₹{product.productMrp.toFixed(2)}
+                            </span>
+                        )}
+                    </div>
                 </div>
-                <div className="text-xs text-gray-500 mb-2">{product.productSize}</div>
-            </div>
-
-            {/* Pricing */}
-            <div className="flex items-center space-x-2 mb-1">
-                <span className="text-emerald-600 font-bold text-sm">
-                    ₹{product.productPrice.toFixed(2)}
-                </span>
-                {discount > 0 && (
-                    <span className="text-xs line-through text-gray-400">
-                        ₹{product.productMrp.toFixed(2)}
-                    </span>
-                )}
             </div>
 
             {/* Quantity / Add */}
             {inStock ? (
                 <ProductQuantityContainer productId={product.productId} />
             ) : (
-                <div className="mt-2 text-xs text-red-500 font-semibold">
+                <div className="text-xs text-red-500 font-semibold">
                     Currently unavailable
                 </div>
             )}
