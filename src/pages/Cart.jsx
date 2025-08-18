@@ -147,7 +147,6 @@ const CartPage = () => {
                         viewport={{ once: true }}
                         className="mt-10"
                     >
-                        <PreviouslyBought products={previouslyBoughtProducts} />
                     </motion.div>
                 )}
             </main>
