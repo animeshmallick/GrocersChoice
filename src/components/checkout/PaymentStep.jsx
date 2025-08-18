@@ -4,15 +4,15 @@ import BottomNavigation from "./BottomNavigation";
 
 const PaymentSelector = ({ methods, selected, onSelect, onNext, onBack, placeOrder}) => {
     return (
-        <div className="pl-6 pr-6">
+        <div className="p-2">
             <h2 className="text-2xl font-semibold mb-4">💳 Select Payment Method</h2>
             <Fade cascade>
-                <div className="grid gap-4">
+                <div className="grid gap-2">
                     {methods.map((method) => (
                         <div
                             key={method.id}
                             onClick={() => onSelect(method)}
-                            className={`p-4 rounded-xl border shadow-sm cursor-pointer transition-all duration-200 ${
+                            className={`px-4 py-2 font-semibold rounded-xl border shadow-sm cursor-pointer transition-all duration-200 ${
                                 selected?.id === method.id
                                     ? 'border-blue-500 bg-blue-50 scale-[1.02]'
                                     : 'hover:bg-gray-100'

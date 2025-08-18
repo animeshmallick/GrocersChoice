@@ -40,7 +40,7 @@ const ProductQuantityContainer = ({ productId, onUpdate }) => {
                     exit={{ opacity: 0, scale: 0.8 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={handleAdd}
-                    className="w-full mt-2 text-[13px] font-semibold text-emerald-600 border border-emerald-600 rounded-full py-1.5 transition-all hover:bg-emerald-50"
+                    className="w-full font-semibold text-emerald-600 border border-emerald-600 rounded-full transition-all hover:bg-emerald-50"
                 >
                     ADD
                 </motion.button>
@@ -50,7 +50,7 @@ const ProductQuantityContainer = ({ productId, onUpdate }) => {
                     initial={{ opacity: 0, y: 8 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -8 }}
-                    className="flex items-center justify-between px-2 mt-2 w-[100px] h-[36px] border border-emerald-600 rounded-full bg-white text-emerald-600 font-bold text-[15px] shadow-sm"
+                    className="flex items-center justify-between px-2 border border-emerald-600 rounded-full bg-white text-emerald-600 font-bold shadow-sm"
                     onClick={(e) => {
                         e.stopPropagation();
                         e.preventDefault();

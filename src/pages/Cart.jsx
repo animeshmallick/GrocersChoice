@@ -103,7 +103,7 @@ const CartPage = () => {
         <div className="flex flex-col min-h-screen bg-gradient-to-b from-green-50 via-white to-emerald-50">
             <Header />
 
-            <main className="flex-grow px-2 sm:px-6 md:px-12 py-3">
+            <main className="flex-grow px-2 sm:px-6 md:px-12">
                 <PageTitle title={"🛒 Your Cart"} size={"small"} />
 
                 {/* Cart Summary */}
@@ -125,7 +125,7 @@ const CartPage = () => {
                 </AnimatePresence>
 
                 {/* Cart Buttons */}
-                <div className="flex justify-center mt-6">
+                <div className="flex justify-center mt-6 px-6">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}

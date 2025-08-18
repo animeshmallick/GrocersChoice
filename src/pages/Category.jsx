@@ -35,10 +35,10 @@ const CategoryPage = () => {
     return (
         <div className="flex flex-col min-h-screen bg-gradient-to-b from-green-50 via-white to-emerald-50">
             <Header />
-            <main className="flex-grow px-2 sm:px-6 md:px-12 py-3">
+            <main className="flex-grow px-1">
                 <PageTitle title={`All ${categoryName} Products`} size={"small"}/>
                 {loading ? (<LoadingSkeleton />) : (
-                    <div className="grid grid-cols-[20%_75%] gap-4 sm:gap-6">
+                    <div className="grid grid-cols-[20%_79%] gap-1">
                         <Sidebar
                             subCategories={Object.keys(categoryData)}
                             selected={selectedSubCategory}
@@ -47,13 +47,13 @@ const CategoryPage = () => {
 
                         <div>
                             <Fade direction="up" cascade damping={0.1} triggerOnce>
-                                <h2 className="text-2xl font-semibold text-gray-800 mb-6 border-l-4 border-emerald-500 pl-4">
+                                <h2 className="text-lg font-semibold text-gray-800 border-l-4 border-emerald-500 pl-1">
                                     {selectedSubCategory}
                                 </h2>
                             </Fade>
 
                             <motion.div
-                                className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5"
+                                className="grid grid-cols-2 gap-1"
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ duration: 0.8 }}

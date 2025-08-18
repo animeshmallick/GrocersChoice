@@ -8,7 +8,7 @@ const ProceedToCheckout = () => {
             onClick={() => navigate("/checkout")}
             whileHover={{ scale: 1.07, rotate: 1 }}
             whileTap={{ scale: 0.95 }}
-            className="bg-emerald-600 hover:bg-emerald-700 text-white text-xl font-semibold px-6 py-2 rounded-lg shadow-md transition-all duration-300 border-2 border-emerald-500 hover:shadow-xl ring-2 ring-emerald-300"
+            className="bg-emerald-600 hover:bg-emerald-700 text-white text-xl font-semibold px-6 py-1.5 rounded-lg shadow-md transition-all duration-300 border-2 border-emerald-500 hover:shadow-xl ring-2 ring-emerald-300"
         >
             Proceed to Checkout →
         </motion.button>
