@@ -107,7 +107,7 @@ const CartPage = () => {
                 <PageTitle title={"🛒 Your Cart"} size={"small"} />
 
                 {/* Cart Summary */}
-                <AnimatePresence mode="wait">
+                <AnimatePresence>
                     <motion.div
                         key={cart.products.length}
                         initial={{ opacity: 0, y: 20 }}
@@ -126,16 +126,18 @@ const CartPage = () => {
 
                 {/* Cart Buttons */}
                 <div className="flex justify-center mt-6 px-6">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6 }}
-                        className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-md"
-                    >
-                        {!isLoggedIn ? <CartLogin /> : <ProceedToCheckout />}
-                        <ContinueShopping />
-                        <ClearCart onClear={onUpdate} />
-                    </motion.div>
+                    <AnimatePresence mode="wait">
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6 }}
+                            className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-md"
+                        >
+                            {!isLoggedIn ? <CartLogin /> : <ProceedToCheckout />}
+                            <ContinueShopping />
+                            <ClearCart onClear={onUpdate} />
+                        </motion.div>
+                    </AnimatePresence>
                 </div>
 
                 {/* Previously Bought Section */}

@@ -27,8 +27,8 @@ const CategoryHolder = ({ mainCategory, subCategories }) => {
                             }
                         }}
                     >
-                        <img src={"https://bsquaresupermart-images.s3.ap-south-1.amazonaws.com/productImages/thumbnail/" + sub?.image || "default.png"} alt={sub?.category || "Category"} loading="lazy"
-                             className="h-16 w-16 mx-auto object-contain transition-transform duration-300 group-hover:scale-110"
+                        <motion.img src={"https://bsquaresupermart-images.s3.ap-south-1.amazonaws.com/productImages/thumbnail/" + sub?.image || "default.png"} alt={sub?.category || "Category"} loading="lazy"
+                             className="h-16 w-16 mx-auto object-cover transition-transform duration-300 group-hover:scale-110"
                         />
                         <p className="px-1 text-sm font-medium text-gray-700 group-hover:text-emerald-700 transition-colors">
                             {sub?.category || "Subcategory"}

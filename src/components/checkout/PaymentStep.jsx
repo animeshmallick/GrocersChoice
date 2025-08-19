@@ -24,7 +24,7 @@ const PaymentSelector = ({ methods, selected, onSelect, onNext, onBack, placeOrd
                 </div>
             </Fade>
 
-            <BottomNavigation onBack={onBack} onNext={onNext} selected={selected} placeOrder={placeOrder}/>
+            <BottomNavigation onBack={onBack} />
         </div>
     );
 };

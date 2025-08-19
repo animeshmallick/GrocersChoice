@@ -3,7 +3,7 @@ import React from "react";
 import {useNavigate} from "react-router-dom";
 import Divider from "../Divider";
 
-const BottomNavigation = ({onBack, onNext, selected, placeOrder}) => {
+const BottomNavigation = ({onBack}) => {
     const navigate = useNavigate();
     return (
         <motion.div
@@ -14,6 +14,7 @@ const BottomNavigation = ({onBack, onNext, selected, placeOrder}) => {
         >
             <Divider />
             {/* Back Button */}
+            {onBack === null && (<button></button>)}
             {onBack !== null && (
                 <button
                     onClick={onBack}
@@ -32,17 +33,6 @@ const BottomNavigation = ({onBack, onNext, selected, placeOrder}) => {
             >
                 🛒 Go to Cart
             </motion.button>
-
-            {/* Next Button */}
-            {onNext !== null && (
-                <button
-                    onClick={onNext}
-                    disabled={!selected}
-                    className="bg-green-600 hover:bg-green-700 text-white py-1.5 px-6 font-semibold rounded-lg shadow-lg transition"
-                >
-                    Next →
-                </button>
-            )}
         </motion.div>
     );
 }

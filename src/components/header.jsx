@@ -85,7 +85,7 @@ const Header = () => {
 
                 <motion.div
                     whileHover={{ scale: 1.03 }}
-                    className="text-2xl font-bold cursor-pointer tracking-wide"
+                    className="text-3xl py-1 font-bold cursor-pointer tracking-wide"
                     onClick={() => navigate("/")}
                 >
                     Grocers's Choice

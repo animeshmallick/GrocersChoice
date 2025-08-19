@@ -117,7 +117,7 @@ const SPC = ({ address, payment, onBack, placeOrder, amount = 0}) => {
                     </motion.div>
                 </AnimatePresence>
             </div>
-            <BottomNavigation onBack={onBack} onNext={null} selected={null} placeOrder={placeOrder}/>
+            <BottomNavigation onBack={onBack} />
         </div>
     );
 };

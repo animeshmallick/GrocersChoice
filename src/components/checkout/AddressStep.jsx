@@ -35,7 +35,7 @@ const AddressSelector = ({ addresses, selected, onSelect, onNext, placeOrder }) 
                 </div>
             </Fade>
 
-            <BottomNavigation onBack={null} onNext={onNext} selected={selected} placeOrder={placeOrder} />
+            <BottomNavigation onBack={null} />
         </div>
     );
 };
