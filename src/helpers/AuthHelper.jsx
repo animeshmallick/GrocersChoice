@@ -3,6 +3,7 @@ import axios from "axios";
 import Config from "../../config";
 
 const TOKEN_KEY = "authToken";
+const ADMIN_TOKEN_KEY = "adminAuthToken";
 const ADDRESS_KEY = "selectedAddress";
 const PAYMENT_KEY = "selectedPayment";
 const ALL_PRODUCT_KEY = "allProducts";
@@ -26,6 +27,9 @@ class AuthHelper {
      */
     getToken() {
         return sessionStorage.getItem(TOKEN_KEY);
+    }
+    getAdminAuthToken(){
+        return sessionStorage.getItem(ADMIN_TOKEN_KEY);
     }
 
     /**
