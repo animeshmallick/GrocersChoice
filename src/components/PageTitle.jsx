@@ -10,10 +10,7 @@ const PageTitle = ({ title, size = "large" }) => {
     return (
         <div className="relative flex flex-col items-center">
             <MotionTag
-                className={`
-                    ${textSize} font-extrabold text-center tracking-tight
-                    text-gray-900 dark:text-gray-100
-                `}
+                className={`${textSize} font-extrabold text-center tracking-tight text-gray-900`}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: "easeOut" }}
