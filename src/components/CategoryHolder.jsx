@@ -20,7 +20,7 @@ const CategoryHolder = React.memo(({ mainCategory, subCategories }) => {
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ duration: 0.7, ease: "easeOut" }}
                     className="relative inline-block text-2xl font-semibold tracking-tight
-                   text-gray-800 dark:text-gray-100 drop-shadow-sm mb-3"
+                   text-gray-800 drop-shadow-sm mb-3"
                 >
                     {mainCategory || "Category"}
 

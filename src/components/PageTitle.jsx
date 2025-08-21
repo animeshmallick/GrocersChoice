@@ -18,16 +18,7 @@ const PageTitle = ({ title, size = "large" }) => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: "easeOut" }}
             >
-                <span className="relative inline-block">
-                    {/* Title text */}
-                    {title}
-
-                    {/* Soft gradient highlight (professional accent) */}
-                    <span className="absolute inset-0 bg-gradient-to-r from-emerald-400/20 to-teal-500/20 blur-2xl rounded-lg"></span>
-                    <span className="absolute inset-0 bg-gradient-to-r from-cyan-400/10 to-blue-500/10 blur-3xl rounded-lg"></span>
-
-
-                </span>
+                <span className="relative inline-block">{title}</span>
             </MotionTag>
 
             {/* Elegant underline */}
