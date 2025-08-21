@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../components/header";
-import Footer from "../components/Footer";
+import Footer from "../components/footer";
 import CartFooter from "../components/CartFooter";
 import CategoryHolder from "../components/CategoryHolder";
 import LoadingSkeleton from "../components/Loading/LoadingSkeleton";
