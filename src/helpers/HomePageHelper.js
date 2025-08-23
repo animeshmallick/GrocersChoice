@@ -18,3 +18,13 @@ export const getAllCategories = (products) => {
     });
     return result;
 };
+export const getHappyHourProducts = (products) => {
+    if (!products || products.length === 0)
+        return [];
+    const result = [];
+    products.forEach((product) => {
+        if (product.hasOwnProperty("happy_hours") && product.happy_hours === 1)
+            result.push(product)
+    });
+    return result;
+}

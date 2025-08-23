@@ -73,7 +73,7 @@ const Header = () => {
     ];
 
     return (
-        <header className="bg-gradient-to-r from-emerald-600 to-emerald-500 text-white p-2 sticky top-0 z-50 shadow-xl">
+        <header className="bg-gradient-to-r from-emerald-600 to-violet-400 text-white p-2 sticky top-0 z-50 shadow-xl">
             <div className="max-w-7xl mx-auto flex justify-between items-center">
                 <motion.div
                     whileTap={{ scale: 0.9 }}
@@ -85,7 +85,7 @@ const Header = () => {
 
                 <motion.div
                     whileHover={{ scale: 1.03 }}
-                    className="text-2xl font-bold cursor-pointer tracking-wide"
+                    className="text-3xl py-1 font-bold cursor-pointer tracking-wide"
                     onClick={() => navigate("/")}
                 >
                     Grocers's Choice
